@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul.sublist {
+            margin: 0;
+            padding: 0;
+            position: absolute;
+            top: 100px;
+        }
+
+        .special {
+            color: red;
+        }
+
+        li {
+            display: inline-block;
+        }
+
+        .leftli {
+            margin-right: 100px;
+        }
+
+        .rightli {
+            margin-left: 100px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="content">
+        <ul class="list">
+            <li class="one">one</li>
+            <li class="two">two</li>
+            <li class="three">three</li>
+            <li class="four">
+                four
+                <ul class="sublist">
+                    <li class="sbl subone">1</li>
+                    <li class="sbl subtwo">2</li>
+                    <li class="sbl subthree">3</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            //akses html lwat console
+            console.log($('li'));
+            console.log($('li').first());
+            // $('li').first().hide();
+            console.log($('li').last());
+            console.log($('li').eq(0));
+            console.log($('li').eq(1));
+            console.log($('ul:first').children());
+            console.log($('ul.sublist').children());
+            console.log($('li').first().siblings());
+            console.log($('li').last().siblings());
+            console.log($('li').last().parent());
+            console.log($('li').last().parent().parent());
+            console.log($('li').last().parent().parent().parent());
+            console.log($('li').last().parent().parent().prev());
+
+            // sample list genap
+            let listcount = $('ul:first').children().length;
+            console.log($(listcount));
+            let halflistcount = listcount / 2;
+            console.log($(halflistcount));
+            let leftli = Math.trunc(halflistcount);
+            let rightli = leftli + 1;
+            console.log($(leftli));
+            console.log($(rightli));
+            let leftliindex = leftli - 1;
+            let rightliindex = rightli - 1;
+            console.log($('li').eq(leftliindex));
+            console.log($('li').eq(rightliindex));
+
+            $('li').eq(leftliindex).addClass('leftli');
+            $('li').eq(rightliindex).addClass('rightli');
+
+            // sample list ganjil
+
+            let listcountG = $('ul.sublist').children().length;
+            console.log($(listcountG));
+            let halflistcountG = listcountG / 2;
+            console.log($(halflistcountG));
+            let leftliG = Math.trunc(halflistcountG);
+            let rightliG = leftliG + 1;
+            console.log($(leftliG));
+            console.log($(rightliG));
+            let leftliindexG = leftliG - 1;
+            let rightliindexG = rightliG - 1;
+            console.log($('li.sbl').eq(leftliindexG));
+            console.log($('li.sbl').eq(rightliindexG));
+
+            $('li.sbl').eq(leftliindexG).addClass('leftli');
+            $('li.sbl').eq(rightliindexG).addClass('rightli');
+
+            $('li').on('click', function () {
+                //$(this).next().hide();
+                // $(this).next().remove();
+                //$(this).siblings().addClass('special');
+                if ($(this).parent().is('.sublist')) {
+                    $(this).hide();
+                }
+            });
+            $('li').on('dblclick', function () {
+                //$(this).removeClass('special');
+                // $(this).hide();
+            });
+
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .tab-panels {
+            margin: 10px 0;
+        }
+
+        .tabs {
+            margin: 0;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .tabs li {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: grey;
+            color: white;
+        }
+
+        .tabs li:hover {
+            background-color: rgb(124, 86, 86);
+            color: white;
+        }
+
+        .tabs li.active {
+            background-color: rgb(99, 26, 26);
+            color: white;
+        }
+
+
+        .panel {
+            display: none;
+        }
+
+        .panel.active {
+            display: block;
+            padding: 20px;
+            background-color: gray;
+            margin-top: 20px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <h1>normal version with separate panel search</h1>
+    <div class="tab-panels">
+        <ul class="tabs">
+            <li rel="panel1" class="active">Panel 1</li>
+            <li rel="panel2">Panel 2</li>
+            <li rel="panel3">Panel 3</li>
+            <li rel="panel4">Panel 4</li>
+        </ul>
+
+        <div id="panel1" class="panel active">
+            <h1>Panel 1</h1>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+        </div>
+        <div id="panel2" class="panel">
+            <h1>Panel 2</h1>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+        </div>
+        <div id="panel3" class="panel">
+            <h1>Panel 3</h1>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+        </div>
+        <div id="panel4" class="panel">
+            <h1>Panel 4</h1>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+        </div>
+    </div>
+
+    <div class="tab-panels">
+        <ul class="tabs">
+            <li rel="panel5" class="active">Panel 5</li>
+            <li rel="panel6">Panel 6</li>
+            <li rel="panel7">Panel 7</li>
+            <li rel="panel8">Panel 8</li>
+        </ul>
+
+        <div id="panel5" class="panel active">
+            <h1>Panel 5</h1>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+        </div>
+        <div id="panel6" class="panel">
+            <h1>Panel 6</h1>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+        </div>
+        <div id="panel7" class="panel">
+            <h1>Panel 7</h1>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+        </div>
+        <div id="panel8" class="panel">
+            <h1>Panel 8</h1>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+            <li>Content</li>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+            $('.tab-panels .tabs li').on('click', function () {
+                let currentPanel = $(this).closest('.tab-panels');
+                $(this).addClass('active');
+                $(this).siblings().removeClass('active');
+
+                let panelID = $(this).attr('rel');
+                currentPanel.find('.panel.active').removeClass('active');
+                $('#' + panelID).addClass('active');
+            });
+
+
+        });
+    </script>
+</body>
+
+</html>

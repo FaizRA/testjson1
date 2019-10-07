@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+
+.head {
+    width: 100%;
+
+    background-color: red;
+    display: block;
+    position: relative;
+}
+
+.title {
+    display: flex;
+
+    h1 {
+        margin: 10vh auto 5vh auto;
+    }
+}
+
+.button {
+    display: flex;
+
+    button {
+        margin: 5vh auto;
+        padding: 30px;
+        font-size: 1.5em;
+    }
+}
+
+.body {
+    display: block;
+    width: 100vw;
+
+    background-color: rgb(80, 70, 209);
+    display: flex;
+    position: relative;
+}
+
+.panels {
+    display: flex;
+    width: 100%;
+
+    .panel {
+        margin: 5vh auto;
+
+        font-size: 1.5em;
+
+
+        .panelTitle {
+            border-style: solid;
+            border-width: 3px;
+            width: 15vw;
+            text-align: center;
+            padding: 30px;
+            background-color: greenyellow;
+
+        }
+
+        .panelContent {
+            border-style: solid;
+            border-width: 3px;
+            width: 15vw;
+            text-align: left;
+            display: flex;
+            flex-wrap: wrap;
+            background-color: rgb(158, 19, 66);
+
+        }
+
+    }
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <div class="head">
+        <div class="title">
+            <h1 id="headTitle">Button</h1>
+        </div>
+        <div class="button">
+            <!--class dan data panel attribute untuk jquery-->
+            <button class="panelButton" data-panelid="panel1">#btn1</button>
+            <button class="panelButton" data-panelid="panel2">#btn2</button>
+            <button class="panelButton" data-panelid="panel3">#btn3</button>
+            <button class="panelButton" data-panelid="panel4">#btn4</button>
+        </div>
+
+        <div class="body">
+            <div class="panels">
+
+                <div class="panel" id="panel1">
+                    <div class="panelTitle">
+                        <p>title1</p>
+                    </div>
+                    <div class="panelContent">
+                        <p>content1</p>
+                    </div>
+                </div>
+
+                <div class="panel" id="panel2">
+                    <div class="panelTitle">
+                        <p>title2</p>
+                    </div>
+                    <div class="panelContent">
+                        <p>content2</p>
+                    </div>
+                </div>
+
+                <div class="panel" id="panel3">
+                    <div class="panelTitle">
+                        <p>title3</p>
+                    </div>
+                    <div class="panelContent">
+                        <p>content3</p>
+                    </div>
+                </div>
+
+                <div class="panel" id="panel4">
+                    <div class="panelTitle">
+                        <p>title4</p>
+                    </div>
+                    <div class="panelContent">
+                        <p>content4</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+
+            let content = "The Content Cangers";
+            //Part3
+            $('.panelButton').on('click', function () {
+                let panelId = $(this).attr('data-panelid'); //cari id dengan this dan attr data-panelid di atas
+                alert(panelId);
+                //toggle
+                $('#' + panelId).toggle();
+                //ganti konten
+                $('#' + panelId + ' .panelContent p').html(content); //perhtikan pemanggilan class / id sebelum .panelContent
+            })
+
+
+        });
+    </script>
+</body>
+
+</html>

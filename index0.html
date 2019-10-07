@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <div class="head">
+        <div class="title">
+            <h1 id="headTitle">Button</h1>
+        </div>
+        <div class="button">
+            <button id="btn1">#btn1</button>
+            <button id="btn2">#btn2</button>
+            <button id="btn3">#btn3</button>
+            <button id="btn4">#btn4</button>
+        </div>
+
+        <div class="body">
+            <div class="panels">
+
+                <div class="panel" id="panel1">
+                    <div class="panelTitle">
+                        <p>title1</p>
+                    </div>
+                    <div class="panelContent">
+                        <p>content1</p>
+                    </div>
+                </div>
+
+                <div class="panel" id="panel2">
+                    <div class="panelTitle">
+                        <p>title2</p>
+                    </div>
+                    <div class="panelContent">
+                        <p>content2</p>
+                    </div>
+                </div>
+
+                <div class="panel" id="panel3">
+                    <div class="panelTitle">
+                        <p>title3</p>
+                    </div>
+                    <div class="panelContent">
+                        <p>content3</p>
+                    </div>
+                </div>
+
+                <div class="panel" id="panel4">
+                    <div class="panelTitle">
+                        <p>title4</p>
+                    </div>
+                    <div class="panelContent">
+                        <p>content4</p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"
+        integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $(function () {
+
+            //Part1
+            $("#panel1").toggle(1000).toggle(1000);
+            $("#panel2").slideUp(1000).slideDown(1000);
+            $("#panel3").slideToggle(1000).slideToggle(1000);
+            $("#panel4").css({
+                color: 'red',
+                fontWeight: 'bold',
+                opacity: '0.5'
+            }).toggle(1000).toggle(1000);;
+
+            //Part2.1
+            $('#headTitle').html('the title has been changed');
+
+            //Part2.2
+            $('#btn1').on('click', function () {
+                $('#panel1').slideToggle(1000);
+            });
+            $('#btn2').on('click', function () {
+                $('#panel2').slideToggle(1000);
+            });
+            $('#btn3').on('click', function () {
+                $('#panel3').slideToggle(1000);
+            });
+            $('#btn4').on('click', function () {
+                $('#panel4').slideToggle(1000);
+            });
+            //Part2.3
+            $('#panel4').on('click', function () {
+                $('#panel4 .panelContent p').html('changed content');
+            });
+
+        });
+    </script>
+</body>
+
+</html>

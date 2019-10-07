@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        li img {
+            width: 200px;
+        }
+    </style>
+</head>
+
+<h1 id="title">nope</h1>
+
+<ul id="list">
+
+</ul>
+
+<body>
+    <script>
+        function email() {
+            return 'brad@gmail.com';
+        }
+        let person = {
+            name: "Brad",
+            age: 35,
+            email: email(),
+            address: {
+                street: "5 main st",
+                city: "Boston"
+            },
+            children: ["Brianna", "Nicholas"] //array
+        }
+
+        //document.getElementById("title").innerHTML = person.email;
+        /*
+        console.log(person);
+        console.log(person.name);
+        console.log(person.age);
+        console.log(person.email);
+        console.log(person.address.street);
+        console.log(person.address.city);
+        console.log(person.children[0]);
+        console.log(person.children[1]);
+        
+
+        let familycard = {
+            id: "1029182018",
+            family: [
+                {
+                    nama: "Tama",
+                    sebagai: "Suami",
+                    umur: 35,
+                    image: "https://scontent.fjog3-1.fna.fbcdn.net/v/t1.0-9/12744048_2119032691569049_7235143091338102595_n.jpg?_nc_cat=110&_nc_oc=AQlVnaBe6aiH9BwBY6HeTQG68qwzMAnz0QSxnMpD7BImHUc75x0qkhj3A33zVL95kz4&_nc_ht=scontent.fjog3-1.fna&oh=8f82483465885811cee17161a0def51c&oe=5E1FEE0F"
+                },
+                {
+                    nama: "Tina",
+                    sebagai: "Istri",
+                    umur: 28,
+                    image: "https://scontent.fjog3-1.fna.fbcdn.net/v/t1.0-9/11825155_2051486028323716_5789542095793228496_n.jpg?_nc_cat=106&_nc_oc=AQn6X89q2bqAesM1JcGe0i6b62TkFegPAKeUenl0IvBj8IwP3xFLFCdObjI5gIjt9ao&_nc_ht=scontent.fjog3-1.fna&oh=637f4a17fa63730b95697f0f94f5a38c&oe=5DF2FB21"
+                },
+                {
+                    nama: "Tono",
+                    sebagai: "Anak",
+                    umur: 5,
+                    image: "https://scontent.fjog3-1.fna.fbcdn.net/v/t1.0-9/11880379_2051486368323682_8897667159391454162_n.jpg?_nc_cat=107&_nc_oc=AQkOSaM-_nT6krJPe7_xwJzc42IQMSXDtuLbPBJHNwfR9bJ29TWn49S_oivoxnBBgm4&_nc_ht=scontent.fjog3-1.fna&oh=396c4802dabc3a0fba638436ebb4e49b&oe=5E3B34BC"
+                }
+            ]
+        }
+                        console.log(familycard);
+                console.log(familycard.id);
+                for (i = 0; i < familycard.family.length; i++) {
+                    console.log(familycard.family[i].nama);
+                    console.log(familycard.family[i].sebagai);
+                    console.log(familycard.family[i].umur);
+                }
+                let output = '';
+        
+                for (i = 0; i < familycard.family.length; i++) {
+                    output += '<li>nama : ' + familycard.family[i].nama + '</li>' +
+                        '<li>sebagai : ' + familycard.family[i].sebagai + '</li>' +
+                        '<li>umur : ' + familycard.family[i].umur + '</li>' +
+                        '<li>image : <img src="' + familycard.family[i].image + '"></li>'
+                }
+                document.getElementById('list').innerHTML = output;
+        */
+
+
+
+
+        //JSONFICATION
+        personjson = JSON.stringify(person);
+        //console.log(personjson);
+        //console.log(personjson.name); // undefined because json, must be parsed to javascrip obj
+
+        //JAVOBJCATION
+        personjavobj = JSON.parse(personjson);
+        // console.log(personjavobj);
+        //console.log(personjavobj.name); // undefined because json, must be parsed to javascrip obj
+
+
+
+        //JSON REQUEST
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // Typical action to be performed when the document is ready:
+                console.log(xhttp.responseText);
+                let personvar = xhttp.responseText; //take json value
+                console.log(personvar.id);
+
+                let JOperson = JSON.parse(personvar); // parse json to jav obj
+                console.log(JOperson.id);
+
+                //OUTPUT HTML
+                let output = '';
+                document.getElementById("title").innerHTML = JOperson.id;
+                for (i = 0; i < JOperson.family.length; i++) {
+                    output += '<li>nama : ' + JOperson.family[i].nama + '</li>' +
+                        '<li>sebagai : ' + JOperson.family[i].sebagai + '</li>' +
+                        '<li>umur : ' + JOperson.family[i].umur + '</li>' +
+                        '<li>image : <img src="' + JOperson.family[i].image + '"></li>'
+                }
+                document.getElementById('list').innerHTML = output;
+            }
+        };
+        xhttp.open("GET", "person.json", true);
+        xhttp.send();
+
+
+    </script>
+</body>
+
+</html>
